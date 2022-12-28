@@ -1,0 +1,2 @@
+const router = require('express').Router()
+const partyController = require("../controllers/partyController") //Requerendo o arquivo de controllers definido para esse modelo em especifico - partyController.js
