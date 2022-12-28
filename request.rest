@@ -26,3 +26,39 @@ Content-Type: application/json
     "horaFinal": "22:30",
     "escritorio": false
 }
+
+###
+POST http://localhost:3000/api/consultas
+Content-Type: application/json
+
+{
+    "dataInicial": "2022-02-20T09:00:10",
+    "dataFinal": "2022-02-20T13:25:17",
+    "valorHora": 300,
+    "visitas": [
+        {
+            "titulo": "Visita na Delta Alterada",
+            "descricao": "Qualquer descricao de delta alterada",
+            "horaInicio": "2022-02-20T12:00:10.000Z",
+            "horaFinal": "2022-02-20T16:25:17.000Z",
+            "escritorio": false,
+            "almoco": false
+        },
+        {
+            "titulo": "Visita na Delta Horario testado 2",
+            "descricao": "Qualquer descricao de delta com horas",
+            "horaInicio": "2022-02-20T12:00:10.000Z",
+            "horaFinal": "2022-02-20T16:25:17.000Z",
+            "escritorio": true,
+            "almoco": false
+        },
+        {
+            "titulo": "Visita na Delta Horario testado",
+            "descricao": "Qualquer descricao de delta com horas",
+            "horaInicio": "2022-02-20T12:00:10.000Z",
+            "horaFinal": "2022-02-20T16:25:17.000Z",
+            "escritorio": true,
+            "almoco": false
+        }
+    ]
+}

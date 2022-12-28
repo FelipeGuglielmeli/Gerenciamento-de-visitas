@@ -10,9 +10,12 @@ const visitaController = {
                 horaInicio: req.body.horaInicio,
                 horaFinal: req.body.horaFinal,
                 escritorio: req.body.escritorio,
-                almoco: req.body.almoco,
+                almoco: req.body.almoco
             }
 
+            //let horasTotais = visita.horaFinal - visita.horaInicio
+            console.log(visita.horaFinal)
+            console.log(visita.horaInicio)
             if(visita.horaFinal < visita.horaInicio) {
                 res.status(401).json({msg: "Data inválida, hora final precisa ser maior que inicial."})
                 return
@@ -26,7 +29,7 @@ const visitaController = {
     },
     getAll: async (req, res) => {
         try {
-            const visitas = await VisitaModel.find()
+            const visitas = await VisitaModel.
 
             res.json(visitas)
         } catch (error) {

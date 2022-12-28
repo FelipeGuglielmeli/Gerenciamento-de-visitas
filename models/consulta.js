@@ -3,11 +3,11 @@ const { Schema } = mongoose
 const { VisitaSchema }  = require('./visita')
 
 const ConsultaSchema = new Schema({
-    data_inicial: {
+    dataInicial: {
         type: Date,
         required: true
     },
-    data_final: {
+    dataFinal: {
         type: Date,
         required: true
     },
@@ -15,7 +15,7 @@ const ConsultaSchema = new Schema({
         type: Number,
         required: true
     },
-    data: {
+    createDate: {
         type: Date,
         default: Date.now
     },
