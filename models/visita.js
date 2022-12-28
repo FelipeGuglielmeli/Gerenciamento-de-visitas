@@ -4,22 +4,22 @@ const { Schema } = mongoose
 const VisitaSchema = new Schema(
     {
         titulo: {
-            type: String
+            type: String,
+            required: true
         },
         descricao: {
             type: String,
             required: true
         },
-        data_visita: {
+        dataVisita: {
             type: Date,
-            required: true,
             default: Date.now
         },
-        hora_inicio: {
+        horaInicio: {
             type: String,
             required: true
         },
-        hora_final: {
+        horaFinal: {
             type: String,
             required: true
         },

@@ -1,0 +1,11 @@
+POST http://localhost:3000/api/visitas
+Content-Type: application/json
+
+{
+    "titulo": "Visita na Delta",
+    "descricao": "Qualquer descricao de delta",
+    "horaInicio": "18:15",
+    "horaFinal": "22:30",
+    "escritorio": true
+}
+
