@@ -2,10 +2,27 @@ POST http://localhost:3000/api/visitas
 Content-Type: application/json
 
 {
-    "titulo": "Visita na Delta",
-    "descricao": "Qualquer descricao de delta",
-    "horaInicio": "18:15",
-    "horaFinal": "22:30",
+    "titulo": "Visita na Delta Horario testado 2",
+    "horaInicio": "2022-02-20T09:00:10",
+    "horaFinal": "2022-02-20T13:25:17",
+    "descricao": "Qualquer descricao de delta com horas",
     "escritorio": true
 }
 
+###
+GET http://localhost:3000/api/visitas
+
+###
+GET http://localhost:3000/api/visitas/63ac8ea93349248503a328e1
+
+###
+PUT  http://localhost:3000/api/visitas/63ac6c509403b13ca556d480
+Content-Type: application/json
+
+{
+    "titulo": "Visita na Delta Alterada",
+    "descricao": "Qualquer descricao de delta alterada",
+    "horaInicio": "18:15",
+    "horaFinal": "22:30",
+    "escritorio": false
+}

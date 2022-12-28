@@ -16,11 +16,11 @@ const VisitaSchema = new Schema(
             default: Date.now
         },
         horaInicio: {
-            type: String,
+            type: Date,
             required: true
         },
         horaFinal: {
-            type: String,
+            type: Date,
             required: true
         },
         escritorio: {
@@ -30,6 +30,9 @@ const VisitaSchema = new Schema(
         almoco: {
             type: Boolean,
             default: false
+        },
+        totalHoras: {
+            type: Number
         }
     }
 )

@@ -10,11 +10,81 @@ const visitaController = {
                 horaInicio: req.body.horaInicio,
                 horaFinal: req.body.horaFinal,
                 escritorio: req.body.escritorio,
-                almoco: req.body.almoco
+                almoco: req.body.almoco,
+            }
+
+            if(visita.horaFinal < visita.horaInicio) {
+                res.status(401).json({msg: "Data inválida, hora final precisa ser maior que inicial."})
+                return
             }
 
             const response = await VisitaModel.create(visita)
             res.status(201).json({ response, msg: "Visita registrada com sucesso." })
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    getAll: async (req, res) => {
+        try {
+            const visitas = await VisitaModel.find()
+
+            res.json(visitas)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    getOne: async (req, res) => {
+        try {
+            const id = req.params.id
+            const visita = await VisitaModel.findById(id)
+
+            if(!visita){
+                res.status(404).json({ msg: "Visita não encontrada."})
+                return
+            }
+
+            res.json(visita)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    delete: async (req, res) => {
+        try {
+            const id = req.params.id
+            const visita = await VisitaModel.findById(id)
+
+            if(!visita){
+                res.status(404).json({ msg: "Visita não encontrada."})
+                return
+            }
+
+            const deletedVisita = await VisitaModel.findByIdAndDelete(id)
+            res.status(200).json({ deletedVisita, msg: "Visita excluída com sucesso."}) 
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    update: async (req, res) => {
+        try {
+            const id = req.params.id
+
+            const visita = {
+                titulo: req.body.titulo,
+                descricao: req.body.descricao,
+                horaInicio: req.body.horaInicio,
+                horaFinal: req.body.horaFinal,
+                escritorio: req.body.escritorio,
+                almoco: req.body.almoco
+            }
+
+            const updatedVisita = await VisitaModel.findByIdAndUpdate(id, visita)
+
+            if(!updatedVisita){
+                res.status(404).json({ msg: "Visita não encontrada."})
+                return
+            }
+
+            res.status(200).json({updatedVisita, msg: "Visita atualizada com sucesso."})
         } catch (error) {
             console.log(error)
         }
