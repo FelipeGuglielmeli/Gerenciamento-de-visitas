@@ -9,7 +9,7 @@ const consultaController = {
                 dataInicial: req.body.dataInicial,
                 dataFinal: req.body.dataFinal,
                 valorHora: req.body.valorHora,
-                visitas: await VisitaModel.find({
+                visitas: await VisitaModel.find({    //Inserindo as Visitas dentro do objeto Consulta dentro do intervalo solicitado e ordenadas
                     dataVisita: {
                         $gte: req.body.dataInicial,
                         $lte: req.body.dataFinal
@@ -18,7 +18,7 @@ const consultaController = {
             }
 
             consulta.horasTrabalhadas = consulta.visitas.reduce((soma, visita) => soma + visita.totalHoras, 0)
-            consulta.valorTotal = (consulta.horasTrabalhadas * consulta.valorHora) //Calculando o valor final do relatorio baseado no valor da hora definido pelo usuario
+            consulta.valorTotal = (consulta.horasTrabalhadas * consulta.valorHora) //Calculando o valor total de horas * valorHora para gerar o relatório
 
             if(consulta.dataFinal < consulta.dataInicial) {
                 res.status(401).json({msg: "Data inválida, data final precisa ser maior que inicial."})
