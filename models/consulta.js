@@ -19,6 +19,12 @@ const ConsultaSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    horasTrabalhadas: {
+        type: Number
+    },
+    valorTotal: {
+        type: Number
+    },
     visitas: {
         type: [VisitaSchema]
     }

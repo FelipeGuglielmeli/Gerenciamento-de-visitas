@@ -1,4 +1,5 @@
 const ConsultaModel = require('../models/consulta')
+const {Visita: VisitaModel} = require('../models/visita')
 
 const consultaController = {
     
@@ -8,8 +9,16 @@ const consultaController = {
                 dataInicial: req.body.dataInicial,
                 dataFinal: req.body.dataFinal,
                 valorHora: req.body.valorHora,
-                visitas: req.body.visitas
+                visitas: await VisitaModel.find({
+                    dataVisita: {
+                        $gte: req.body.dataInicial,
+                        $lte: req.body.dataFinal
+                    }
+                }).sort({ dataVisita: 'asc' })
             }
+
+            consulta.horasTrabalhadas = consulta.visitas.reduce((soma, visita) => soma + visita.totalHoras, 0)
+            consulta.valorTotal = (consulta.horasTrabalhadas * consulta.valorHora) //Calculando o valor final do relatorio baseado no valor da hora definido pelo usuario
 
             if(consulta.dataFinal < consulta.dataInicial) {
                 res.status(401).json({msg: "Data inválida, data final precisa ser maior que inicial."})
@@ -22,9 +31,17 @@ const consultaController = {
             console.log(error)
         }
     },
-    getInterval: async (req, res) => {
+    getOne: async (req, res) => {
         try {
-            
+            const id = req.params.id
+            const consulta = await ConsultaModel.findById(id)
+
+            if(!consulta){
+                res.status(404).json({ msg: "Consulta não encontrada."})
+                return
+            }
+
+            res.json(consulta)
         } catch (error) {
             console.log(error)
         }

@@ -7,15 +7,16 @@ const visitaController = {
             const visita = {
                 titulo: req.body.titulo,
                 descricao: req.body.descricao,
-                horaInicio: req.body.horaInicio,
-                horaFinal: req.body.horaFinal,
+                horaInicio: new Date(req.body.horaInicio),
+                horaFinal: new Date(req.body.horaFinal),
                 escritorio: req.body.escritorio,
-                almoco: req.body.almoco
+                almoco: req.body.almoco,
+                dataVisita: req.body.dataVisita,
             }
 
-            //let horasTotais = visita.horaFinal - visita.horaInicio
-            console.log(visita.horaFinal)
-            console.log(visita.horaInicio)
+            visita.totalHoras = (visita.horaFinal - visita.horaInicio) / 3600000 
+            console.log(parseFloat(visita.totalHoras).toFixed(2)) //Calculando a quantidade de horas da visita para gerar o relatório
+
             if(visita.horaFinal < visita.horaInicio) {
                 res.status(401).json({msg: "Data inválida, hora final precisa ser maior que inicial."})
                 return

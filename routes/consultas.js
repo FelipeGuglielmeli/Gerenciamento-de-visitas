@@ -4,4 +4,7 @@ const consultaController = require("../controllers/consultaControllers") //Reque
 router.route('/consultas')
     .post((req, res) => consultaController.create(req, res))
 
+router.route('/consultas/:id')
+    .get((req, res) => consultaController.getOne(req, res))
+
 module.exports = router

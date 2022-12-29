@@ -13,7 +13,7 @@ const VisitaSchema = new Schema(
         },
         dataVisita: {
             type: Date,
-            default: Date.now
+            
         },
         horaInicio: {
             type: Date,
@@ -34,7 +34,7 @@ const VisitaSchema = new Schema(
         totalHoras: {
             type: Number
         }
-    }
+    }, {timestamps: true}
 )
 
  const Visita = mongoose.model('Visita', VisitaSchema)
