@@ -7,7 +7,7 @@ async function main() {
             "mongodb://127.0.0.1:27017/", //Setando a string de conexão com o banco de dados
         )
 
-        console.log('Conectado ao baco.')
+        console.log('Conectado ao banco.')
     } catch (error) {
         console.log(`Erro: ${error}`)
     }

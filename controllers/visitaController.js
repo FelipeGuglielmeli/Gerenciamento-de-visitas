@@ -79,6 +79,11 @@ const visitaController = {
                 escritorio: req.body.escritorio,
                 almoco: req.body.almoco
             }
+            
+            if(!visita){
+                res.status(404).json({ msg: "Visita não encontrada."})
+                return
+            }
 
             const updatedVisita = await VisitaModel.findByIdAndUpdate(id, visita)
 
