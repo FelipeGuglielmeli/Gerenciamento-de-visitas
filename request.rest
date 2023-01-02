@@ -6,7 +6,7 @@ Content-Type: application/json
     "horaInicio": "2022-02-20T09:00:10",
     "horaFinal": "2022-02-20T13:25:17",
     "descricao": "Qualquer descricao de delta com horas",
-    "escritorio": true,
+    "almoco": true,
     "dataVisita": "2022-03-27T09:00:10"
 }
 

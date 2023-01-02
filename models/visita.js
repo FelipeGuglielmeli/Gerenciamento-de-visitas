@@ -34,7 +34,7 @@ const VisitaSchema = new Schema(
         totalHoras: {
             type: Number
         }
-    }, {timestamps: true}
+    }
 )
 
  const Visita = mongoose.model('Visita', VisitaSchema)
