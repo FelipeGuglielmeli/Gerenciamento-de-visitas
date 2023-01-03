@@ -13,8 +13,6 @@ Os consultores da empresa realizam visitas em outras empresas que precisam ser r
 A solicitação foi que a API armazenasse os dados de uma visita para fins de gerar documentos de apropriação de serviços.
 O projeto foi desenvolvido no padrão MVC, utilizando JavaScript, MongoDB, Mongoose e Express para as requisições http.
 
-Obs. Como este código foi criado para fins de demonstração, eu trouxe alguns cálculos que estavam no frontend para facilitar a compreensão.
-
 Visitas: A coleção visitas contém hora inicial e final, data, descrição e o total de horas que é calculado no controller.
 
 Consultas: A coleção de consultas tem as datas de inicio e fim definidas pelo usuário e os demais atributos são calculados dentro do controller.
