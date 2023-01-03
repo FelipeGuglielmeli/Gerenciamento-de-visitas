@@ -22,7 +22,7 @@ const visitaController = {
             }
 
             const response = await VisitaModel.create(visita)
-            res.status(201).json({ response, msg: "Visita registrada com sucesso." })
+            res.status(200).json({ response, msg: "Visita registrada com sucesso." })
         } catch (error) {
             console.log(error)
         }
