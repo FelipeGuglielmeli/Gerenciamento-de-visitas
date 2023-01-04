@@ -14,19 +14,20 @@ const visitaController = {
                 dataVisita: req.body.dataVisita,
             }
 
-            visita.totalHoras = (visita.horaFinal - visita.horaInicio) / 3600000 //Calculando a diferenca entre a hora inicial e a hora final definida na visita
+            visita.totalHoras = (visita.horaFinal - visita.horaInicio) / 3600000 
+            console.log(parseFloat(visita.totalHoras).toFixed(2)) //Calculando a quantidade de horas da visita para gerar o relatório
 
             if (visita.almoco == true) {
                 visita.totalHoras--
             }
-    
+
             if(visita.horaFinal < visita.horaInicio) {
                 res.status(401).json({ msg: "Data inválida, hora final precisa ser maior que inicial." })
                 return
             }
 
             const response = await VisitaModel.create(visita)
-            res.status(201).json({ response, msg: "Visita registrada com sucesso." })
+            res.status(200).json({ response, msg: "Visita registrada com sucesso." })
         } catch (error) {
             console.log(error)
         }

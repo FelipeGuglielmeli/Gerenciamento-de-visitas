@@ -9,7 +9,7 @@ const consultaController = {
                 dataInicial: req.body.dataInicial,
                 dataFinal: req.body.dataFinal,
                 valorHora: req.body.valorHora,
-                visitas: await VisitaModel.find({    //Inserindo as Visitas dentro do objeto Consulta dentro do intervalo solicitado e ordenadas
+                visitas: await VisitaModel.find({
                     dataVisita: {
                         $gte: req.body.dataInicial,
                         $lte: req.body.dataFinal
